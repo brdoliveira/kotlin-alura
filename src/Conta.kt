@@ -1,38 +1,24 @@
-class Conta(
+abstract class Conta(
     var titular: String,
-    val numero: Int = 0
- ){
+    val numero: Int
+) {
     var saldo = 0.0
-        private set
+        protected set
 
-    fun deposita(valor: Double){
-        if(valor > 0){
+    fun deposita(valor: Double) {
+        if (valor > 0) {
             this.saldo += valor
         }
     }
 
-    fun saca(valor : Double){
-        if(saldo > valor){
-            saldo -= valor
-        }
-    }
+    abstract fun saca(valor: Double)
 
-    fun transfere(valor: Double, destino: Conta): Boolean{
-        if(saldo >= valor){
+    fun transfere(valor: Double, destino: Conta): Boolean {
+        if (saldo >= valor) {
             saldo -= valor
             destino.deposita(valor)
             return true
         }
         return false
     }
-
-//    fun getSaldo(): Double{
-//        return this.saldo
-//    }
-//
-//    fun setSaldo(valor: Double){
-//        if(valor > 0){
-//            saldo = valor
-//        }
-//    }
 }
