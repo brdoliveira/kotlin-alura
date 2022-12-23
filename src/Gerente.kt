@@ -2,19 +2,12 @@ class Gerente(
     nome : String,
     cpf: String,
     salario: Double,
-    val senha : Int
-) : Funcionario(
+    senha : Int
+) : FuncionarioAdmin(
     nome= nome,
     cpf=cpf,
-    salario = salario
-) {
-
-    override val bonificacao: Double get() = super.bonificacao + salario
-
-    fun autentica(senha: Int): Boolean {
-        if(this.senha == senha){
-            return true
-        }
-        return false
-    }
+    salario = salario,
+    senha= senha
+){
+    override val bonificacao: Double get() = salario
 }
