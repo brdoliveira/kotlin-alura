@@ -1,3 +1,5 @@
+import modelo.ContaPoupanca
+
 fun testaCopiasEReferencias(){
     // copia
     val numeroX = 10

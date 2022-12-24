@@ -1,3 +1,5 @@
+import modelo.*
+
 private fun testaAutenticacao() {
     val gerente : Autenticavel = Gerente(
         nome = "Alex",
