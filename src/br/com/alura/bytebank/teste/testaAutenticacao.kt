@@ -1,4 +1,4 @@
-import modelo.*
+import br.com.alura.bytebank.modelo.*
 
 private fun testaAutenticacao() {
     val gerente : Autenticavel = Gerente(

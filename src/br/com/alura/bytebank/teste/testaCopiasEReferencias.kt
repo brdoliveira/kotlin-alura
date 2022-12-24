@@ -1,4 +1,4 @@
-import modelo.ContaPoupanca
+import br.com.alura.bytebank.modelo.ContaPoupanca
 
 fun testaCopiasEReferencias(){
     // copia
