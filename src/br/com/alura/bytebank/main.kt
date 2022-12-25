@@ -1,16 +1,21 @@
 import br.com.alura.bytebank.modelo.Endereco
 
 fun main() {
-    val endereco = Endereco()
-    val objeto: Any = Any()
+    val endereco = Endereco(
+        logradouro = "Rua Vergueiro",
+        complemento = "Alura",
+        cep = "00000-000"
+    )
+    val enderecoNovo = Endereco(
+        bairro = "Vila Mariana",
+        numero = 1000,
+        cep= "00000-000"
+    )
 
-    imprime(objeto)
-    imprime(Unit)
-    imprime(1)
-    imprime(1.0)
+    println(endereco.hashCode())
+    println(endereco.equals(enderecoNovo))
+    println(endereco.toString())
 
-    val teste: Any = imprime(endereco)
-    println(teste)
 }
 
 fun imprime(valor: Any): Any{
