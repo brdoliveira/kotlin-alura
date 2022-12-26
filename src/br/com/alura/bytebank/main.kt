@@ -3,53 +3,21 @@ package br.com.alura.bytebank
 import br.com.alura.bytebank.modelo.Endereco
 
 fun main() {
-    println("início main")
-    val entrada: String = "1,9"
+    var enderecoNulo: Endereco? = Endereco(logradouro = "Rua Vergueiro", complemento = "Prédio")
+    val logradouroNovo: String? = enderecoNulo?.logradouro
 
-    val valorRecebido: Double? = try{
-        entrada.toDouble()
-    }catch (e: NumberFormatException){
-        println("Problema na conversão")
-        e.printStackTrace()
-        null
+    enderecoNulo?.let {
+        println(it.logradouro.length)
+        val tamanhoComplemento: Int =
+            it.complemento?.length ?: throw IllegalStateException("Complemento não pode ser vazio")
+        println(tamanhoComplemento)
     }
 
-    val valorComTaxa: Double? = when {
-        valorRecebido != null -> {
-            valorRecebido + 0.1
-        }
-        else -> {
-            null
-        }
-    }
-
-    if(valorComTaxa != null){
-        println("valor recebido: $valorComTaxa")
-    }else{
-        println("valor inválido")
-    }
-
-    funcao1()
-    println("fim main")
+    teste("")
+    teste(1)
 }
 
-fun funcao1(){
-    println("início funcao1")
-    try {
-        funcao2()
-    }catch (e: ClassCastException) {
-        e.printStackTrace()
-        println("ClassCastException foi pegada")
-    }
-    println("fim funcao1")
-}
-
-fun funcao2() {
-    println("início funcao2")
-    for (i in 1..5) {
-        println(i)
-        val endereco = Any()
-        endereco as Endereco
-    }
-    println("fim funcao2")
+fun teste(valor: Any){
+    val numero: Int? = valor as? Int
+    println(numero)
 }
