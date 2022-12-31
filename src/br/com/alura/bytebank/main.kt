@@ -1,23 +1,40 @@
 package br.com.alura.bytebank
 
+import br.com.alura.bytebank.modelo.Autenticavel
 import br.com.alura.bytebank.modelo.Endereco
+import br.com.alura.bytebank.modelo.SistemaInterno
 
 fun main() {
-    var enderecoNulo: Endereco? = Endereco(logradouro = "Rua Vergueiro", complemento = "Prédio")
-    val logradouroNovo: String? = enderecoNulo?.logradouro
+//    val endereco  = Endereco(logradouro = "Rua Vergueiro", numero = 3185)
+//    val enderecoEmMaiusculo = "${endereco.logradouro}, ${endereco.numero}".toUpperCase()
+//    println(enderecoEmMaiusculo)
 
-    enderecoNulo?.let {
-        println(it.logradouro.length)
-        val tamanhoComplemento: Int =
-            it.complemento?.length ?: throw IllegalStateException("Complemento não pode ser vazio")
-        println(tamanhoComplemento)
+    Endereco(logradouro = "Rua Vergueiro", numero = 3185)
+        .let { endereco ->
+            "${endereco.logradouro}, ${endereco.numero}".toUpperCase()
+        }.let(::println)
+    
+    listOf(
+        Endereco(complemento = "casa"),
+        Endereco(),
+        Endereco(complemento = "apartamento"))
+        .filter (predicate = { endereco ->  endereco.complemento.isNotEmpty()})
+        .let(block = ::println)
+
+    soma(1,5, resultado = ::println)
+
+    val autenticavel = object : Autenticavel {
+        val senha = 1234
+        override fun autentica(senha: Int) = this.senha == senha
     }
 
-    teste("")
-    teste(1)
+    SistemaInterno().entra(autenticavel,1234, autenticado = {
+        println("Realizar pagamento")
+    })
 }
 
-fun teste(valor: Any){
-    val numero: Int? = valor as? Int
-    println(numero)
+fun soma(a: Int, b:Int, resultado : (Int) -> Unit) {
+    println("Antes da soma")
+    resultado(a + b)
+    println("Depois da soma")
 }
