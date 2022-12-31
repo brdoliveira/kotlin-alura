@@ -2,7 +2,7 @@ package br.com.alura.bytebank.teste
 
 import br.com.alura.bytebank.modelo.Endereco
 
-fun testeNulo(){
+fun testaNulable(){
     var enderecoNulo: Endereco? = Endereco(logradouro = "Rua Vergueiro", complemento = "Prédio")
     val logradouroNovo: String? = enderecoNulo?.logradouro
 
